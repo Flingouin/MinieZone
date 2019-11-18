@@ -12,18 +12,12 @@ namespace Structure
 
         public List<Article> ListeArticle { get; set; } = new List<Article>();
 
-        public double SommeHT(List<double> ListePrixHTArticle)
-        {
-            double result = 0;
-            ListePrixHTArticle.ForEach(a => result += a);
-            return result;
-        }
+        public Facturation Facturation { get; set; }
+        public Livraison Livraison { get; set; }
 
-        public double SommeTTC(List<double> ListePrixHTArticle)
+        public double SommeTTC(double SommeHT)
         {
-            double result = 0;
-            result = SommeHT(ListePrixHTArticle) * 1.20;
-            return result;
+            return (SommeHT * 1.20);
         }
 
     }
