@@ -44,7 +44,7 @@ namespace ConsoleDeTest
             commande.ListeArticle.Add(new Article { Nom = "Article 10", PrixHT = Math.Round(random.NextDouble() * 40, 2) });
 
             double prixTotalHT = commande.ListeArticle.Where(ls => ls.PrixHT>=0).Sum(ls => ls.PrixHT);
-            double prixMoyen = Math.Round(commande.ListeArticle.Select(ls => ls.PrixHT).Average(),2);
+            double prixMoyen = Math.Round(commande.ListeArticle.Where(ls => ls.PrixHT>0).Select(ls => ls.PrixHT).Average(),2);
             double prixTotalTTC = commande.SommeTTC(prixTotalHT);
             int livraison = commande.PrixLivraison(commande);
             prixTotalTTC += livraison;
