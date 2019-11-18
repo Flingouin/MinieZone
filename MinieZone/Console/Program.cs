@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -59,20 +60,22 @@ namespace ConsoleDeTest
                 }
                 else
                 {
+                    CultureInfo.CurrentCulture = new CultureInfo("fr-FR", false);
+                    Console.OutputEncoding = Encoding.UTF8;
                     commande.ListeArticle.ForEach(a => Console.WriteLine(a.Detail(a)));
                     Console.WriteLine("Quel est votre sexe ? 1-Homme, 2-Femme");
                     commande.Livraison.Personne.EnumSexe = (EnumSexe)Int32.Parse(Console.ReadLine());
                     commande.Facturation.Personne.EnumSexe = commande.Livraison.Personne.EnumSexe;
                     Console.WriteLine("___________________");
-                    Console.WriteLine("Prix total HT : " + prixTotalHT);
-                    Console.WriteLine("Prix total TTC : " + prixTotalTTC);
-                    Console.WriteLine("Dont livraison : " + livraison);
-                    Console.WriteLine("Prix moyen d'un article : " + prixMoyen);
-                    Console.WriteLine("Date de création : " + commande.Date);
+                    Console.WriteLine("Prix total HT : {0:C2}", prixTotalHT);
+                    Console.WriteLine("Prix total TTC : {0:C2}", prixTotalTTC);
+                    Console.WriteLine("Dont livraison : {0:C2}", livraison);
+                    Console.WriteLine("Prix moyen d'un article : {0:C2}", prixMoyen);
+                    Console.WriteLine("Date de création : {0}", commande.Date);
                     Console.WriteLine("___________________");
-                    Console.WriteLine("Adresse de Facturation : " + commande.Livraison.Detail(commande.Livraison.Personne.EnumSexe, commande.Livraison));
-                    Console.WriteLine("Adresse de livraison : " + commande.Facturation.Detail(commande.Facturation.Personne.EnumSexe, commande.Facturation));
-                    Console.WriteLine("Date de livraison estimé : " + commande.Livraison.DateLivraison.ToShortDateString());
+                    Console.WriteLine("Adresse de Facturation : {0}",commande.Livraison.Detail(commande.Livraison.Personne.EnumSexe, commande.Livraison));
+                    Console.WriteLine("Adresse de livraison : {0}",commande.Facturation.Detail(commande.Facturation.Personne.EnumSexe, commande.Facturation));
+                    Console.WriteLine("Date de livraison estimé : {0}",commande.Livraison.DateLivraison.ToShortDateString());
                     Console.ReadKey();
                 }
             }
