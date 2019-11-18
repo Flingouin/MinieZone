@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,33 +43,49 @@ namespace ConsoleDeTest
             commande.ListeArticle.Add(new Article { Nom = "Article 8", PrixHT = Math.Round(random.NextDouble() * 40, 2) });
             commande.ListeArticle.Add(new Article { Nom = "Article 9", PrixHT = Math.Round(random.NextDouble() * 40, 2) });
             commande.ListeArticle.Add(new Article { Nom = "Article 10", PrixHT = Math.Round(random.NextDouble() * 40, 2) });
-
-            double prixTotalHT = commande.ListeArticle.Where(ls => ls.PrixHT>=0).Sum(ls => ls.PrixHT);
-            double prixMoyen = Math.Round(commande.ListeArticle.Where(ls => ls.PrixHT>0).Select(ls => ls.PrixHT).Average(),2);
-            double prixTotalTTC = commande.SommeTTC(prixTotalHT);
-            int livraison = commande.PrixLivraison(commande);
-            prixTotalTTC += livraison;
-
-            if (prixTotalHT < 0)
+            List<Article> ListeArticleCalculable = commande.ListeArticle.Where(ls => ls.PrixHT > 0).ToList();
+            try
             {
-                Console.WriteLine("Montant impossible négatif");
-                Console.ReadKey();
+                double prixMoyen = Math.Round(ListeArticleCalculable.Select(ls => ls.PrixHT).Average(), 2);
+                double prixTotalHT = ListeArticleCalculable.Sum(ls => ls.PrixHT);
+                double prixTotalTTC = commande.SommeTTC(prixTotalHT);
+                int livraison = commande.PrixLivraison(commande);
+                prixTotalTTC += livraison;
+
+                if (prixTotalHT < 0)
+                {
+                    Console.WriteLine("Montant impossible négatif");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    commande.ListeArticle.ForEach(a => Console.WriteLine(a.Detail(a)));
+                    Console.WriteLine("Quel est votre sexe ? 1-Homme, 2-Femme");
+                    commande.Livraison.Personne.EnumSexe = (EnumSexe)Int32.Parse(Console.ReadLine());
+                    commande.Facturation.Personne.EnumSexe = commande.Livraison.Personne.EnumSexe;
+                    Console.WriteLine("___________________");
+                    Console.WriteLine("Prix total HT : " + prixTotalHT);
+                    Console.WriteLine("Prix total TTC : " + prixTotalTTC);
+                    Console.WriteLine("Dont livraison : " + livraison);
+                    Console.WriteLine("Prix moyen d'un article : " + prixMoyen);
+                    Console.WriteLine("Date de création : " + commande.Date);
+                    Console.WriteLine("___________________");
+                    Console.WriteLine("Adresse de Facturation : " + commande.Livraison.Detail(commande.Livraison.Personne.EnumSexe, commande.Livraison));
+                    Console.WriteLine("Adresse de livraison : " + commande.Facturation.Detail(commande.Facturation.Personne.EnumSexe, commande.Facturation));
+                    Console.WriteLine("Date de livraison estimé : " + commande.Livraison.DateLivraison.ToShortDateString());
+                    Console.ReadKey();
+                }
             }
-            else
+            catch (EmptyArticleException e)
             {
-                commande.ListeArticle.ForEach(a => Console.WriteLine(a.Detail(a)));
-                Console.WriteLine("___________________");
-                Console.WriteLine("Prix total HT : " + prixTotalHT);
-                Console.WriteLine("Prix total TTC : " + prixTotalTTC);
-                Console.WriteLine("Dont livraison : " + livraison);
-                Console.WriteLine("Prix moyen d'un article : " + prixMoyen);
-                Console.WriteLine("Date de création : " + commande.Date);
-                Console.WriteLine("___________________");
-                Console.WriteLine("Adresse de Facturation : " + commande.Livraison.Detail(commande.Livraison));
-                Console.WriteLine("Adresse de livraison : " + commande.Facturation.Detail(commande.Facturation));
-                Console.WriteLine("Date de livraison estimé : " + commande.Livraison.DateLivraison.ToShortDateString());
+                e.Exception(ListeArticleCalculable, commande.ListeArticle);
+                Console.WriteLine("Impossible de passer une commande qui ne contient aucun article");
                 Console.ReadKey();
+                throw;
             }
+ 
+
         }
+
     }
 }

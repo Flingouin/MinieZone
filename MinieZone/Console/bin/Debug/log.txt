@@ -1,0 +1,8 @@
+14:49:42 lundi 18 novembre 2019
+  :
+  :Les articles calculable ont une valeur négative
+-------------------------------
+14:50:46 lundi 18 novembre 2019
+  :
+  :Aucun article n'a été sélectionné
+-------------------------------

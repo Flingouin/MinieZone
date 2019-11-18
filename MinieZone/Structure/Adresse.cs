@@ -13,9 +13,9 @@ namespace Structure
         public Pays Pays { get; set; }
         public Personne Personne { get; set; }
 
-        public string Detail(Adresse adresse)
+        public string Detail(EnumSexe enumSexe, Adresse adresse)
         {
-            return adresse.Personne.Nom + " " + adresse.Personne.Prenom + " | " + adresse.NumeroDeRue + " " + adresse.NomDeRue + " " + adresse.CodePostal + " " + adresse.Ville + " " + adresse.Pays.Nom;
+            return string.Format("{0} {1} {2} | {3} {4} {5} {6} {7}", EnumHelper.EnumSexeConverter(enumSexe), adresse.Personne.Nom, adresse.Personne.Prenom, adresse.NumeroDeRue, adresse.NomDeRue, adresse.CodePostal, adresse.Ville, adresse.Pays.Nom);
         }
     }
 }

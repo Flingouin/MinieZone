@@ -15,6 +15,7 @@ namespace Structure
         public Facturation Facturation { get; set; }
         public Livraison Livraison { get; set; }
 
+
         public double SommeTTC(double SommeHT)
         {
             return Math.Round(SommeHT * 1.20,2);

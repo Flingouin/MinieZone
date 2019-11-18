@@ -12,6 +12,8 @@ namespace Structure
 
         public string Prenom { get; set; }
 
+        public EnumSexe EnumSexe { get; set; }
+
         public List<Facturation> Facturation { get; set; } = new List<Facturation>();
 
         public List<Livraison> Livraison { get; set; } = new List<Livraison>();
