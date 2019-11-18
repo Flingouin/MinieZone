@@ -1,0 +1,9 @@
+D:\GitHub\MinieZone\MinieZone\Console\bin\Debug\Console.exe.config
+D:\GitHub\MinieZone\MinieZone\Console\bin\Debug\Console.exe
+D:\GitHub\MinieZone\MinieZone\Console\bin\Debug\Console.pdb
+D:\GitHub\MinieZone\MinieZone\Console\bin\Debug\Structure.dll
+D:\GitHub\MinieZone\MinieZone\Console\bin\Debug\Structure.pdb
+D:\GitHub\MinieZone\MinieZone\Console\obj\Debug\ConsoleDeTest.csprojAssemblyReference.cache
+D:\GitHub\MinieZone\MinieZone\Console\obj\Debug\ConsoleDeTest.csproj.CopyComplete
+D:\GitHub\MinieZone\MinieZone\Console\obj\Debug\Console.exe
+D:\GitHub\MinieZone\MinieZone\Console\obj\Debug\Console.pdb

@@ -1,0 +1,8 @@
+D:\GitHub\MinieZone\MinieZone\Structure\bin\Debug\netstandard2.0\Structure.deps.json
+D:\GitHub\MinieZone\MinieZone\Structure\bin\Debug\netstandard2.0\Structure.dll
+D:\GitHub\MinieZone\MinieZone\Structure\bin\Debug\netstandard2.0\Structure.pdb
+D:\GitHub\MinieZone\MinieZone\Structure\obj\Debug\netstandard2.0\Structure.csprojAssemblyReference.cache
+D:\GitHub\MinieZone\MinieZone\Structure\obj\Debug\netstandard2.0\Structure.AssemblyInfoInputs.cache
+D:\GitHub\MinieZone\MinieZone\Structure\obj\Debug\netstandard2.0\Structure.AssemblyInfo.cs
+D:\GitHub\MinieZone\MinieZone\Structure\obj\Debug\netstandard2.0\Structure.dll
+D:\GitHub\MinieZone\MinieZone\Structure\obj\Debug\netstandard2.0\Structure.pdb
