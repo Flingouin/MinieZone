@@ -10,12 +10,12 @@ namespace Structure
         public string NomDeRue { get; set; }
         public int CodePostal { get; set; }
         public string Ville { get; set; }
-        public string Pays { get; set; }
+        public Pays Pays { get; set; }
         public Personne Personne { get; set; }
 
         public string Detail(Adresse adresse)
         {
-            return adresse.Personne.Nom + " " + adresse.Personne.Prenom + " | " + adresse.NumeroDeRue + " " + adresse.NomDeRue + " " + adresse.CodePostal + " " + adresse.Ville + " " + adresse.Pays;
+            return adresse.Personne.Nom + " " + adresse.Personne.Prenom + " | " + adresse.NumeroDeRue + " " + adresse.NomDeRue + " " + adresse.CodePostal + " " + adresse.Ville + " " + adresse.Pays.Nom;
         }
     }
 }
