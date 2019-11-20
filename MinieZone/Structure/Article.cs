@@ -9,7 +9,7 @@ namespace Structure
         public Guid ID_Article { get; set; } = Guid.NewGuid();
 
         public double PrixHT { get; set; }
-
+        [NoNull]
         public string Nom { get; set; }
 
         public string Detail(Article article)

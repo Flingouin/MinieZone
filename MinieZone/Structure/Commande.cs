@@ -37,7 +37,7 @@ namespace Structure
                         break;
                     case EnumLocalisation.Europe:
                         result = 10;
-                        if (prixTotal >= 50)
+                        if (prixTotal >= 50 || nbArticle >4)
                             result = 0;
                         break;
                     case EnumLocalisation.Autre:
